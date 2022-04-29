@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+</head>
+
+<body>
+ 
+    <form name="marks" method="GET" onSubmit="saveMarks(this)">
+        Введите имя: <input type="text" name="n1" size="15"><br />
+        Введите оценки:<br />
+        Java <input type="text" name="m1" size="4"><br />
+        PHP <input type="text" name="m2" size="4"><br />
+        JavaScript <input type="text" name="m3" size="4"><br />
+        <input type="submit" value="Сохранить" name="save"><br />
+        <a href="marks.html">Перейти на страницу оценок</a>
+    </form>
+    <script>
+       
+        function saveMarks(){
+            let m1 = document.forms["marks"]["m1"].value;
+            let m2 = document.forms["marks"]["m2"].value;
+            let m3 = document.forms["marks"]["m3"].value;
+            let n1 = document.forms["marks"]["n1"].value;
+            if (m1 == "" || m2 == "" || m3=="" || n1=="") {
+                alert("Name must be filled out");
+                return false;
+            }
+            else alert(n1+" "+m1+" "+m2+" "+m3);
+             let stud = {
+                name: n1,
+                marks: [m1, m2, m3]
+            };
+            let retStud = JSON.stringify(stud);
+            localStorage.setItem("stud", retStud)
+        }
+        
+    </script>
+</body>
+
+</html>
